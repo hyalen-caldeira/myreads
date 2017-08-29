@@ -16,17 +16,21 @@ class BooksApp extends Component {
     })
   }
 
+  updateBooks = (books) => {
+    this.setState({books})
+  }
+
   render() {
     const { books } = this.state
 
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <ListBooks books={books}></ListBooks>
+          <ListBooks books={ books }></ListBooks>
           )}>
         </Route>
         <Route exact path='/search' render={() => (
-          <SearchBooks books={books}></SearchBooks>
+          <SearchBooks books={ books } onUpdateBooks={this.updateBooks}></SearchBooks>
           )}>
         </Route>
       </div>

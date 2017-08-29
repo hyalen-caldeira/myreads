@@ -12,6 +12,12 @@ class ListBooksShelf extends Component {
     this.setState({selected : event.target.value})
   }
 
+  static propTypes = {
+    books : PropTypes.array.isRequired,
+    shelf : PropTypes.string.isRequired,
+    title : PropTypes.string.isRequired
+  }
+
   render() {
     const { books, shelf, title } = this.props
 
