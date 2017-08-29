@@ -1,23 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import sortBy from 'sort-by'
-import * as BooksAPI from './BooksAPI'
 
 class ListBooksGrid extends Component {
   state = {
     selected : "none"
   }
 
-  handleSelectChange = (event) => {
-    this.setState({selected : event.target.value})
-
-    // BooksAPI.update(book, event.target.value).then(
-    //   this.props.onUpdateBooks(book)
-    // )
+  static propTypes = {
+    books : PropTypes.array.isRequired,
+    handleChange : PropTypes.func.isRequired
   }
 
   render() {
-    const { books } = this.props
+    const { books, handleChange } = this.props
 
     return (
       <ol className="books-grid">
@@ -30,7 +25,7 @@ class ListBooksGrid extends Component {
                 <div className="book-shelf-changer">
                   <select
                     value={ book.shelf }
-                    onChange={this.handleSelectChange}>
+                    onChange={(event) => handleChange(event.target.value, book)}>
                     <option value="none" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
