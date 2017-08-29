@@ -6,6 +6,10 @@ import ListBooksShelf from './ListBooksShelf'
 class ListBooks extends Component {
   state = {}
 
+  static propTypes = {
+    books : PropTypes.array.isRequired
+  }
+
   render() {
     const { books } = this.props
 
