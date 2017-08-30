@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ListBooksGrid extends Component {
-  state = {
-    selected : "none"
-  }
-
   static propTypes = {
     books : PropTypes.array.isRequired,
     handleChange : PropTypes.func.isRequired

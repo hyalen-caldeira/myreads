@@ -14,31 +14,29 @@ class SearchBooks extends Component {
     this.setState({query : event.target.value})
   }
 
-  handleSelectChange = (selected, book) => {
-    this.setState({ selected })
-
-    if (this.props.onUpdateBooks)
-      for (let obj of this.props.books) {
-        if (obj.id === book.id) {
-          obj.shelf = selected
-
-          BooksAPI.update(book, selected).then(
-            this.props.onUpdateBooks(this.props.books))
-        }
-      }
-  }
+  // handleSelectChange = (selected, book) => {
+  //   this.setState({ selected })
+  //
+  //   if (this.props.onUpdateBooks)
+  //     for (let obj of this.props.books) {
+  //       if (obj.id === book.id) {
+  //         obj.shelf = selected
+  //
+  //         BooksAPI.update(book, selected).then(
+  //           this.props.onUpdateBooks(this.props.books))
+  //       }
+  //     }
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault()
 
     BooksAPI.search(this.state.query, 10)
-      .then((booksSearched) => {
-        this.setState({booksSearched})})
+      .then(booksSearched => this.setState({booksSearched}))
       .catch((e) => {this.setState({booksSearched : []})})
   }
 
   render () {
-    const { books, onUpdateBooks } = this.props
     const { query, booksSearched } = this.state
 
     return (
@@ -56,7 +54,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ListBooksGrid books={booksSearched} handleChange={this.handleSelectChange}></ListBooksGrid>
+          <ListBooksGrid books={booksSearched} handleChange={this.props.handleChange}></ListBooksGrid>
         </div>
       </div>
     )
