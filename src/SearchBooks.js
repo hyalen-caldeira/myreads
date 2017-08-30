@@ -11,15 +11,14 @@ class SearchBooks extends Component {
   }
 
   handleInputChange = (event) => {
-    this.setState({query : event.target.value})
-  }
-
-  handleSubmit = (event) => {
     event.preventDefault()
 
-    BooksAPI.search(this.state.query, 10)
-      .then(booksSearched => this.setState({booksSearched}))
-      .catch((e) => {this.setState({booksSearched : []})})
+    this.setState({query : event.target.value})
+
+    if (event.target.value)
+      BooksAPI.search(event.target.value, 10)
+        .then(booksSearched => this.setState({booksSearched}))
+        .catch((e) => {this.setState({booksSearched : []})})
   }
 
   render () {
@@ -30,13 +29,11 @@ class SearchBooks extends Component {
         <div className="search-books-bar">
           <Link className='close-search' to='/'>Close</Link>
           <div className="search-books-input-wrapper">
-            <form onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                placeholder="Search by title or author"
-                value={query}
-                onChange={this.handleInputChange}/>
-            </form>
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              value={query}
+              onChange={this.handleInputChange}/>
           </div>
         </div>
         <div className="search-books-results">
