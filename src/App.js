@@ -7,6 +7,7 @@ import SearchBooks from './SearchBooks'
 
 class BooksApp extends Component {
   state = {
+    selected : "",
     books : []
   }
 
@@ -20,17 +21,39 @@ class BooksApp extends Component {
     this.setState({books})
   }
 
+  handleSelectChange = (selected, book) => {
+    this.setState({ selected })
+
+    //if (this.props.onUpdateBooks)
+      for (let obj of this.state.books) {
+        if (obj.id === book.id) {
+          obj.shelf = selected
+
+          BooksAPI.update(book, selected).then(
+            // this.setState(books)
+          )
+        }
+      }
+  }
+
   render() {
     const { books } = this.state
 
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <ListBooks books={ books }></ListBooks>
+          <ListBooks
+            books={ books }
+            onUpdateBooks={ this.updateBooks }
+            handleChange={this.handleSelectChange}>
+          </ListBooks>
           )}>
         </Route>
         <Route exact path='/search' render={() => (
-          <SearchBooks books={ books } onUpdateBooks={this.updateBooks}></SearchBooks>
+          <SearchBooks
+            books={ books }
+            handleChange={this.handleSelectChange}>
+          </SearchBooks>
           )}>
         </Route>
       </div>
