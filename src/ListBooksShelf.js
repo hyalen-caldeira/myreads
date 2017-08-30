@@ -4,24 +4,17 @@ import sortBy from 'sort-by'
 import ListBooksGrid from './ListBooksGrid'
 
 class ListBooksShelf extends Component {
-  state = {
-    selected : ""
-  }
-
-  handleSelectChange = (event) => {
-    this.setState({selected : event.target.value})
-  }
-
   static propTypes = {
     books : PropTypes.array.isRequired,
     shelf : PropTypes.string.isRequired,
-    title : PropTypes.string.isRequired
+    title : PropTypes.string.isRequired,
+    handleChange : PropTypes.func.isRequired
   }
 
   render() {
-    const { books, shelf, title } = this.props
+    const { books, shelf, title, handleChange } = this.props
 
-    let showBooks = books.filter((book) => (book.shelf === shelf))
+    let showBooks = books.filter(book => book.shelf === shelf)
     showBooks.sort(sortBy('title'))
 
     return (
@@ -29,7 +22,10 @@ class ListBooksShelf extends Component {
         <div className="bookshelf">
           <h2 className="bookshelf-title">{title}</h2>
           <div className="bookshelf-books">
-            <ListBooksGrid books={showBooks}></ListBooksGrid>
+            <ListBooksGrid
+              books={showBooks}
+              handleChange={handleChange}>
+            </ListBooksGrid>
           </div>
         </div>
       </div>
