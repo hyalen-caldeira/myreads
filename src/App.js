@@ -24,16 +24,14 @@ class BooksApp extends Component {
   handleSelectChange = (selected, book) => {
     this.setState({ selected })
 
-    //if (this.props.onUpdateBooks)
-      for (let obj of this.state.books) {
-        if (obj.id === book.id) {
-          obj.shelf = selected
+    for (let obj of this.state.books) {
+      if (obj.id === book.id) {
+        obj.shelf = selected
 
-          BooksAPI.update(book, selected).then(
-            // this.setState(books)
-          )
-        }
+        BooksAPI.update(book, selected).then(
+        )
       }
+    }
   }
 
   render() {
