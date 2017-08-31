@@ -1,3 +1,5 @@
+# MyReads Project
+
 In the MyReads project, I've created a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API client library that you will use to persist information as you interact with the application.
 
 In this application, the main page should displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are: Currently Reading, Want to Read and Read.
@@ -10,9 +12,13 @@ The search page has a text input that may be used to find books. As the value of
 
 This project was started using [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
-## What I've done
+## Project Setup
 
-## What I've done
+* Clone the Project - `git clone https://github.com/hyalen-moreira/myreads.git`
+* Install the dependencies - `npm install`
+* Start the application - `npm start`
+
+## What you gonna find
 ```
 +--public/    
  |-- index.html - DO NOT MODIFY
