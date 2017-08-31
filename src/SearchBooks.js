@@ -5,9 +5,19 @@ import ListBooksGrid from './ListBooksGrid'
 
 class SearchBooks extends Component {
   state = {
-    selected : "",
     booksSearched : [],
     query : ""
+  }
+
+  updateBooksShelf(booksSearched) {
+    for (const book of booksSearched) {
+      if (this.props.map[book.id])
+        book.shelf = this.props.map[book.id].shelf
+      else
+        book.shelf = "none"
+
+      this.setState({booksSearched})
+    }
   }
 
   handleInputChange = (event) => {
@@ -17,7 +27,7 @@ class SearchBooks extends Component {
 
     if (event.target.value)
       BooksAPI.search(event.target.value, 10)
-        .then(booksSearched => this.setState({booksSearched}))
+        .then(booksSearched => this.updateBooksShelf(booksSearched))
         .catch((e) => {this.setState({booksSearched : []})})
   }
 

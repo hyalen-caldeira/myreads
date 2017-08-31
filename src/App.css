@@ -168,6 +168,11 @@ body, .app {
   background: #eee;
 }
 
+.book-image {
+  width: 128px;
+  height: 193px;
+}
+
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;

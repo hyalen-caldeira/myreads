@@ -5,12 +5,11 @@ import ListBooksShelf from './ListBooksShelf'
 
 class ListBooks extends Component {
   static propTypes = {
-    books : PropTypes.array.isRequired,
-    onUpdateBooks : PropTypes.func.isRequired
+    books : PropTypes.array.isRequired
   }
 
   render() {
-    const { books, onUpdateBooks, handleChange } = this.props
+    const { books, handleChange } = this.props
 
     return (
       <div className="list-books">
@@ -19,25 +18,13 @@ class ListBooks extends Component {
         </div>
         <div>
           <ListBooksShelf
-            books={books}
-            shelf="read"
-            title="Read"
-            onUpdateBooks={onUpdateBooks}
-            handleChange={handleChange}>
+            books={books} shelf="read" title="Read" handleChange={handleChange}>
           </ListBooksShelf>
           <ListBooksShelf
-            books={books}
-            shelf="currentlyReading"
-            title="Currently Reading"
-            onUpdateBooks={onUpdateBooks}
-            handleChange={handleChange}>
+            books={books} shelf="currentlyReading" title="Currently Reading" handleChange={handleChange}>
           </ListBooksShelf>
           <ListBooksShelf
-            books={books}
-            shelf="wantToRead"
-            title="Want to Read"
-            onUpdateBooks={onUpdateBooks}
-            handleChange={handleChange}>
+            books={books} shelf="wantToRead" title="Want to Read" handleChange={handleChange}>
           </ListBooksShelf>
         </div>
         <div className="open-search">

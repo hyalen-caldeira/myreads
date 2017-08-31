@@ -11,6 +11,8 @@ The search page has a text input that may be used to find books. As the value of
 This project was started using [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
 ## What I've done
+
+## What I've done
 ```
 +--public/    
  |-- index.html - DO NOT MODIFY
