@@ -18,7 +18,7 @@ This project was started using [Create React App](https://github.com/facebookinc
 * Install the dependencies - `npm install`
 * Start the application - `npm start`
 
-## What I gonna find
+## What you gonna find
 ```
 +--public/    
  |-- index.html - DO NOT MODIFY

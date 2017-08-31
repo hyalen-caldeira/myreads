@@ -7,42 +7,37 @@ import SearchBooks from './SearchBooks'
 
 class BooksApp extends Component {
   state = {
-    selected : "",
-    books : []
+    books : [],
+    map : []
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({books})
+  getAllBooks() {
+    BooksAPI.getAll().then(books => {
+      let map = []
+
+      for (const book of books)
+        map[book.id] = book
+
+      this.setState({books, map})
     })
   }
 
-  updateBooks = (books) => {
-    this.setState({books})
+  componentDidMount() {
+    this.getAllBooks()
   }
 
   handleSelectChange = (selected, book) => {
-    this.setState({ selected })
-
-    for (let obj of this.state.books) {
-      if (obj.id === book.id) {
-        obj.shelf = selected
-
-        BooksAPI.update(book, selected).then(
-        )
-      }
-    }
+    BooksAPI.update(book, selected).then(this.getAllBooks())
   }
 
   render() {
-    const { books } = this.state
+    const { books, map } = this.state
 
     return (
       <div className="app">
         <Route exact path='/' render={() => (
           <ListBooks
             books={ books }
-            onUpdateBooks={ this.updateBooks }
             handleChange={this.handleSelectChange}>
           </ListBooks>
           )}>
@@ -50,6 +45,7 @@ class BooksApp extends Component {
         <Route exact path='/search' render={() => (
           <SearchBooks
             books={ books }
+            map={ map }
             handleChange={this.handleSelectChange}>
           </SearchBooks>
           )}>
