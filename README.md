@@ -14,8 +14,8 @@ This project was started using [Create React App](https://github.com/facebookinc
 
 ## Project Setup
 
-* clone the Project - `git clone https://github.com/hyalen-moreira/myreads.git`
-* install the dependencies - `npm install`
+* Clone the Project - `git clone https://github.com/hyalen-moreira/myreads.git`
+* Install the dependencies - `npm install`
 * Start the application - `npm start`
 
 ## What I gonna find
