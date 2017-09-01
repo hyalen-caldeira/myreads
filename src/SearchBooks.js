@@ -5,6 +5,7 @@ import ListBooksGrid from './ListBooksGrid'
 
 class SearchBooks extends Component {
   state = {
+    selected : "",
     booksSearched : [],
     query : ""
   }
@@ -31,6 +32,14 @@ class SearchBooks extends Component {
         .catch((e) => {this.setState({booksSearched : []})})
   }
 
+  handleSelectChange = (selected, book, booksSearched) => {
+    book.shelf = selected
+
+    this.setState({selected, booksSearched})
+
+    this.props.handleChange(selected, book)
+  }
+
   render () {
     const { query, booksSearched } = this.state
 
@@ -47,7 +56,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ListBooksGrid books={booksSearched} handleChange={this.props.handleChange}></ListBooksGrid>
+          <ListBooksGrid books={booksSearched} handleChange={this.handleSelectChange}></ListBooksGrid>
         </div>
       </div>
     )

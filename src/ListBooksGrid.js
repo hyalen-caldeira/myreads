@@ -24,7 +24,7 @@ class ListBooksGrid extends Component {
                   <div className="book-shelf-changer">
                     <select
                       value={ book.shelf }
-                      onChange={(event) => handleChange(event.target.value, book)}>
+                      onChange={(event) => handleChange(event.target.value, book, books)}>
                       <option value="moveTo" disabled>Move to...</option>
                       <option value="currentlyReading">Currently Reading</option>
                       <option value="wantToRead">Want to Read</option>

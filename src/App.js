@@ -44,7 +44,6 @@ class BooksApp extends Component {
         </Route>
         <Route exact path='/search' render={() => (
           <SearchBooks
-            books={ books }
             map={ map }
             handleChange={this.handleSelectChange}>
           </SearchBooks>
