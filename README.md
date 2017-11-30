@@ -17,6 +17,7 @@ This project was started using [Create React App](https://github.com/facebookinc
 * Clone the Project - `git clone https://github.com/hyalen-moreira/myreads.git`
 * Install the dependencies - `npm install`
 * Start the application - `npm start`
+* Install and start the [server](https://github.com/hyalen-moreira/reactnd-project-readable-starter)
 
 ## What you gonna find
 ```
